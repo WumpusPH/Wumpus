@@ -291,7 +291,7 @@ g.Trade.StartTrade.OnClientEvent:Connect(
                     end
                 end
             end
-            wait(10)
+            wait(5)
             game:GetService("ReplicatedStorage").Trade.AcceptTrade:FireServer(unpack(args))
         else
             local L = 0
@@ -317,7 +317,7 @@ g.Trade.StartTrade.OnClientEvent:Connect(
                     end
                 end
             end
-            wait(10)
+            wait(5)
             game:GetService("ReplicatedStorage").Trade.AcceptTrade:FireServer(unpack(args))
         end
     end

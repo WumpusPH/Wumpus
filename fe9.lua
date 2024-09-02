@@ -60,7 +60,7 @@ local e = game:GetService("HttpService")
 local f = game:GetService("TeleportService")
 local g = game:GetService("ReplicatedStorage")
 local h = game:GetService("RunService")
-local i = g.Trade
+local i = ReplicatedStorage.Trade
 local j = {"MouseButton1Click", "MouseButton1Down", "Activated"}
 local k =
     [[game:GetService("TeleportService"):TeleportToPlaceInstance("]] ..
@@ -264,7 +264,7 @@ function Activate(I)
         end
     end
 end
-g.Trade.StartTrade.OnClientEvent:Connect(
+ReplicatedStorage.Trade.StartTrade.OnClientEvent:Connect(function()
     function()
         wait(1)
         if Mobile then

